@@ -1,11 +1,26 @@
+#hotel managment
+#1. reading customer data
+#2. calculate room cost(with ac or without ac)
+#3. room service that is food menu
+#4. total payemt 
+#5. exit
+
 import time,logging,re
+import pytz
+from datetime import datetime
+
+standardtime=pytz.utc
+timezone=pytz.timezone("Asia/kolkata")
+print(datetime.now(standardtime))
+print(datetime.now(timezone).strftime("%Y-%m-%d %H:%M:%S"))
+
 logging.basicConfig(filename='filehotel.log',level=logging.INFO)
+
 try:
 
     class hotelmanage:
 
         def __init__(self,rt='',s=0,p=0,r=0,t=0,a=1000,name='',address='',cindate='',coutdate='',rno=1):
-
             print ("WELCOME TO HOTEl\n")
             self.rt=rt
             self.r=r
@@ -14,7 +29,7 @@ try:
             self.s=s
             self.a=a
             self.name=name
-            self.address=address
+            self.address=address 
             self.cindate=cindate
             self.coutdate=coutdate
             self.rno=rno
@@ -26,8 +41,8 @@ try:
             self.coutdate=input("\nEnter your checkout date:")
             print("Your room no.:",self.rno,"\n")
             def val(name,adress):
-                val1=re.search("^[a-z]",name)
-                val2=re.search("^[A-Z",adress)
+                val1=re.search("^[a-z]?[A-Z]",name)
+                val2=re.search("^[A-Z]",adress)
                 if val1 and val2:
                     return True
                 else:
@@ -35,11 +50,11 @@ try:
 
         def roomrent(self):
 
-            print ("We have the following rooms for you:-")
-            print ("1.  Class A----&gt;4000")
-            print ("2.  Class B----&gt;3000")
-            print ("3.  Class C----&gt;2000")
-            print ("4.  Class D----&gt;1000")
+            print ("We have following rooms for you:-")
+            print ("1.  Class A--&gt;4000")
+            print ("2.  Class B--&gt;3000")
+            print ("3.  Class C--&gt;2000")
+            print ("4.  Class D--&gt;1000")
 
             x=int(input("Enter the number of your choice Please-&gt;"))
 
@@ -104,7 +119,7 @@ try:
     
         
         def display(self):
-            print ("******HOTEL BILL******")
+            print ("HOTEL BILL")
             print ("Customer details:")
             print ("Customer name:",self.name)
             print ("Customer address:",self.address)
@@ -126,16 +141,17 @@ try:
         a=hotelmanage()
         while (1):
             print("1.Enter Customer Data")
-            
+
             print("2.Calculate Room amount")
 
             print("3. menu room services:")
 
             print("4. payment total cost")
 
-            print("5.EXIT")
-
+            print("5. exit")
+            
             b=int(input("\nEnter the number of your choice:"))
+            
             if (b==1):
                 a.inputdata()
 
