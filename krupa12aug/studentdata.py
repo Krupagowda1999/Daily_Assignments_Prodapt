@@ -62,7 +62,7 @@ while True:
 
     if(ch==6):
         clas=input("enter the class:")
-        result=collection_name.aggregate([{"$group":{"_id":"$clas","average":{"$sum":"a"}}}])
+        result=collection_name.aggregate([{"$group":{"_id":"$clas","average":{"$average":"a"}}}])
         for i in result:        
             print(i)  
 
